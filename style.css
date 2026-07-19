@@ -99,4 +99,105 @@ button:hover { background: #028a7d; }
     margin: 1rem;
     font-family: monospace;
     }
-    
+
+/* =========================================================
+   HUOKAING THARA BANKING SYSTEM - PRODUCTION CSS v1.0
+   Theme: Cyber-Oceanic | Modern Banking Interface
+========================================================= */
+
+:root {
+    --primary: #00a896;
+    --primary-hover: #028a7d;
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --bg-surface: #f1f5f9;
+    --accent: #22d3ee;
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --modal-overlay: rgba(15, 23, 42, 0.85);
+}
+
+/* Global Resets */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { 
+    background-color: var(--bg-surface); 
+    color: var(--dark); 
+    font-family: 'Segoe UI', Roboto, sans-serif; 
+    line-height: 1.6;
+}
+
+/* Dashboard Layout */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+.dashboard-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    border-bottom: 4px solid var(--primary);
+    transition: transform 0.2s ease;
+}
+
+.dashboard-card:hover { transform: translateY(-5px); }
+
+/* QR Modal Overlay */
+#qrModal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--modal-overlay);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#qrModal.hidden { display: none !important; }
+
+.modal-content {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
+}
+
+#qrcode { 
+    margin: 1.5rem auto; 
+    display: flex; 
+    justify-content: center; 
+}
+
+/* Buttons */
+button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+button:hover { background: var(--primary-hover); }
+
+/* AI Status Bubble */
+#aiStatusBubble {
+    background: var(--dark);
+    color: var(--accent);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    display: inline-block;
+    margin: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    border: 1px solid var(--accent);
+        }
