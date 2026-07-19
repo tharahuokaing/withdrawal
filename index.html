@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="dashboard">
+        <h1>Welcome to Huokaing Thara</h1>
+        <div id="summaryBox"></div>
+        <button id="btnWithdraw">Request QR Withdrawal</button>
+    </div>
+
+    <!-- QR Modal -->
+    <div id="qrModal" class="hidden">
+        <div class="modal-content">
+            <div id="qrcode"></div>
+            <p>Scan this at any HT Bank ATM</p>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
