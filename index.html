@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HT Bank - QR Withdrawal</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="withdrawal.png">
+    <link rel="icon" href="withdrawal.png" type="image/png">
 </head>
 <body>
-    <div id="dashboard">
-        <h1>Welcome to Huokaing Thara</h1>
+
+    <main id="dashboard" aria-labelledby="dashboard-title">
+        <h1 id="dashboard-title">Welcome to Huokaing Thara</h1>
         <div id="summaryBox"></div>
         <button id="btnWithdraw">Request QR Withdrawal</button>
-    </div>
+    </main>
 
-    <!-- QR Modal -->
-    <div id="qrModal" class="hidden">
+    <!-- QR Modal using native HTML5 Dialog -->
+    <dialog id="qrModal">
         <div class="modal-content">
             <div id="qrcode"></div>
             <p>Scan this at any HT Bank ATM</p>
             <button onclick="closeModal()">Close</button>
         </div>
-    </div>
+    </dialog>
     
     <script src="script.js"></script>
 </body>
