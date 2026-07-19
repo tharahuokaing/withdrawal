@@ -1,45 +1,25 @@
 /**
- * HUOKAING THARA - Withdrawal Module
- * Handles the logic for debiting funds and recording the transaction in the ledger.
+ * HUOKAING THARA - Withdrawal Module (Calculated)
  */
+const WithdrawalModule = {
+    withdrawFunds: function(amountInput) {
+        const amount = parseFloat(amountInput);
 
-(() => {
-    "use strict";
-
-    const WithdrawalHandler = {
-        /**
-         * Processes a withdrawal request.
-         * @param {string} amount - The amount to withdraw.
-         */
-        processWithdrawal: function(amount) {
-            const numericAmount = parseFloat(amount);
-
-            // 1. Validation
-            if (isNaN(numericAmount) || numericAmount <= 0) {
-                alert("Invalid transaction: Please enter a positive numerical amount.");
-                return;
-            }
-
-            // 2. Prepare Debit Data
-            // We format the volume as a negative value to represent a debit
-            const newEntry = {
-                id: "WDR-" + Math.floor(Math.random() * 10000),
-                tier: "Account Holder",
-                route: "Debit/Withdrawal",
-                volume: `-$${numericAmount.toLocaleString(undefined, {minimumFractionDigits: 2})}`,
-                status: "Success"
-            };
-
-            // 3. Update Audit Vault via LedgerEngine
-            if (window.LedgerEngine) {
-                window.LedgerEngine.addEntry(newEntry);
-                console.log(`[WITHDRAWAL]: Successfully debited $${numericAmount}.`);
-            } else {
-                console.error("[ERROR]: LedgerEngine not found. Ensure ledger.js is loaded.");
-            }
+        if (isNaN(amount) || amount <= 0) {
+            alert("Invalid amount.");
+            return;
         }
-    };
 
-    // Expose to window so it can be called from index.html buttons
-    window.WithdrawalHandler = WithdrawalHandler;
-})();
+        // Add to Ledger as a negative value
+        window.LedgerEngine.addEntry({
+            id: "WDR-" + Math.floor(Math.random() * 10000),
+            tier: "Account Holder",
+            route: "Debit Withdrawal",
+            volume: -amount, // Negative for deduction
+            status: "Success"
+        });
+        
+        document.getElementById("withdrawInput").value = ""; // Clear input
+    }
+};
+window.WithdrawalModule = WithdrawalModule;
