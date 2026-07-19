@@ -3,27 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HT Bank - QR Withdrawal</title>
+    <title>HT Banking System - Liquidity & Deposit Manager</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="withdrawal.png" type="image/png">
 </head>
 <body>
 
-    <main id="dashboard" aria-labelledby="dashboard-title">
-        <h1 id="dashboard-title">Welcome to Huokaing Thara</h1>
-        <div id="summaryBox"></div>
-        <button id="btnWithdraw">Request QR Withdrawal</button>
-    </main>
+    <!-- Main Module Container -->
+    <div class="deposit-dashboard">
+        
+        <!-- Top Management Header -->
+        <header class="module-header">
+            <div class="title-area">
+                <h2>CORE DEPOSIT & LIQUIDITY LEDGER</h2>
+                <p>Huokaing Thara Banking System • System Monitoring Panel</p>
+            </div>
+            <div class="action-buttons">
+                <button id="refreshDataBtn" class="btn-secondary">Re-Synchronize</button>
+            </div>
+        </header>
 
-    <!-- QR Modal using native HTML5 Dialog -->
-    <dialog id="qrModal">
-        <div class="modal-content">
-            <div id="qrcode"></div>
-            <p>Scan this at any HT Bank ATM</p>
-            <button onclick="closeModal()">Close</button>
+        <!-- Summary Row -->
+        <section class="summary-row">
+            <div class="summary-card gold">
+                <span class="card-label">Total Liquid Capital</span>
+                <h2 id="displayTotalDeposits">$252,910,000</h2>
+                <div class="progress-bar-container"><div class="progress-bar" style="width: 84.3%;"></div></div>
+            </div>
+            <!-- Additional summary cards here -->
+        </section>
+
+        <!-- Operational Breakdowns -->
+        <div class="panel-layout">
+            
+            <!-- Asset Distribution -->
+            <section class="data-panel">
+                <h3>Deposit Asset Class Distribution</h3>
+                <div id="distributionContainer"></div>
+            </section>
+
+            <!-- Audit Vault Ledger -->
+            <section class="data-panel ledger-view">
+                <h3>Recent Institutional Inflows & Placements</h3>
+                <table class="deposit-table">
+                    <thead>
+                        <tr>
+                            <th>Reference ID</th>
+                            <th>Account Tier</th>
+                            <th>Routing Type</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="depositLogBody"></tbody>
+                </table>
+            </section>
         </div>
-    </dialog>
+
+        <!-- Withdrawal Module -->
+        <section class="data-panel withdrawal-panel">
+            <h3>Funds Withdrawal</h3>
+            <input type="number" id="withdrawInput" class="withdrawal-input" placeholder="Enter amount..." />
+            <button class="btn-withdraw" onclick="WithdrawalModule.withdrawFunds(document.getElementById('withdrawInput').value)">
+                Execute Withdrawal
+            </button>
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="ledger.js"></script>
+    <script src="deposit.js"></script>
+    <script src="deposit_vault.js"></script>
+    <script src="withdrawal.js"></script>
     
-    <script src="script.js"></script>
 </body>
 </html>
