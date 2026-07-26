@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Withdrawal & Transfer Amount | Huokaing Thara Banking System</title>
+    <link rel="stylesheet" href="withdrawal.css">
+    <link rel="icon" href="bank.jpg" type="image/jpeg">
+</head>
+<body>
+
+    <!-- Bank Logo Wrapper & Branding -->
+    <div class="bank-logo-wrapper">
+        <img src="bank.jpg" alt="Bank Logo" class="bank-logo-img">
+    </div>
+
+    <!-- Withdrawal Functional Container -->
+    <div class="withdrawal-container">
+        <h2>Withdrawal & Transfer Portal</h2>
+        <p class="subtitle">Complete your transaction or verify scanned QR / crypto asset details.</p>
+
+        <!-- Dynamic Payload / Asset Notice Box -->
+        <div id="qrNoticeBox" class="message-box active">
+            Initializing secure transfer channel...
+        </div>
+
+        <!-- Withdrawal Form -->
+        <form id="withdrawalForm">
+            <div class="input-group">
+                <label for="transferAmountInput">Transfer Amount (USD)</label>
+                <input type="number" id="transferAmountInput" placeholder="0.00" step="0.01" required>
+            </div>
+
+            <div class="input-group">
+                <label for="recipientNameDisplay">Recipient / Destination Node</label>
+                <input type="text" id="recipientNameDisplay" value="Huokaing Thara Secure Vault" readonly>
+            </div>
+
+            <button type="submit" id="confirmWithdrawalBtn" class="btn-primary">Confirm & Withdraw</button>
+        </form>
+
+        <div class="action-footer">
+            <a href="https://tharahuokaing.github.io/bank2/" class="btn-link">Return to Dashboard</a>
+        </div>
+    </div>
+
+    <!-- Script Architecture -->
+    <script src="withdrawal.js"></script>
+</body>
+</html>
